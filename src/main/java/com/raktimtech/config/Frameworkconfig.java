@@ -1,10 +1,13 @@
 package com.raktimtech.config;
 
 import com.raktimtech.config.converters.StringToBrowserTypeConverter;
+import com.raktimtech.config.converters.StringToURLConverter;
 import com.raktimtech.enums.BrowserRemoteModeType;
 import com.raktimtech.enums.BrowserType;
 import com.raktimtech.enums.RunModeBrowserType;
 import org.aeonbits.owner.Config ;
+
+import java.net.URL;
 
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
@@ -24,5 +27,13 @@ public interface Frameworkconfig extends Config{
 
     @Key("browserRemoteMode")
     BrowserRemoteModeType browserRemoteMode() ;
+
+      @ConverterClass(StringToURLConverter.class)
+      URL seleniumGridURL();
+
+      @ConverterClass(StringToURLConverter.class)
+      URL selenoidURL() ;
+
+
 
 }
